@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Xiangyu Liao — PhD Researcher, University of Zurich</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500&family=Source+Han+Serif+SC&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink:       #1a1410;
+      --ink-soft:  #4a3f35;
+      --ink-faint: #8a7a6a;
+      --paper:     #f5f0e8;
+      --paper-warm:#ede6d5;
+      --red:       #8b1a1a;
+      --red-light: #b5372a;
+      --gold:      #c9a84c;
+      --rule:      #c8b89a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--paper);
+      background-image: url('2006AG1813-2.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center center;
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.75;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(245, 240, 232, 0.80);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header, nav, main, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 59px,
+          rgba(201,168,76,0.08) 59px,
+          rgba(201,168,76,0.08) 60px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 59px,
+          rgba(201,168,76,0.06) 59px,
+          rgba(201,168,76,0.06) 60px
+        );
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .header-chinese {
+      font-size: 1rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      opacity: 0.9;
+    }
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--paper);
+      margin-bottom: 0.5rem;
+    }
+    .header-title {
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      color: var(--rule);
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .header-inst {
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--rule);
+      opacity: 0.85;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--paper-warm);
+      border-bottom: 1px solid var(--rule);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 0;
+    }
+    nav a {
+      display: block;
+      padding: 0.85rem 1.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav a:hover {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    p { margin-bottom: 1.1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    .about-sidebar {
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      padding: 1.5rem;
+    }
+    .about-sidebar h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.8rem;
+    }
+    .interest-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--red);
+      border: 1px solid var(--red-light);
+      padding: 0.2rem 0.6rem;
+      margin: 0.2rem 0.2rem 0.2rem 0;
+      background: rgba(139,26,26,0.04);
+    }
+
+    /* ── PROJECTS ── */
+    .project-item {
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--gold);
+    }
+    .project-item:last-child { margin-bottom: 0; }
+    .project-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 0.3rem;
+    }
+    .project-item h3 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .project-item h3 em {
+      font-style: italic;
+      color: var(--red);
+    }
+    .project-meta {
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-item {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--paper-warm);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--red);
+    }
+    .pub-item:last-child { margin-bottom: 0; }
+    .pub-authors {
+      font-size: 0.88rem;
+      color: var(--ink-faint);
+      margin-bottom: 0.3rem;
+    }
+    .pub-title {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.45;
+      margin-bottom: 0.3rem;
+    }
+    .pub-title-zh {
+      font-size: 0.92rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin-bottom: 0.3rem;
+    }
+    .pub-venue {
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+    }
+    .pub-venue em { font-style: italic; color: var(--ink-soft); }
+
+    /* ── CV ── */
+    .cv-block {
+      margin-bottom: 2rem;
+    }
+    .cv-block h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 0.5rem 1.5rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 500px) {
+      .cv-entry { grid-template-columns: 1fr; gap: 0.1rem; }
+    }
+    .cv-year {
+      color: var(--ink-faint);
+      font-size: 0.85rem;
+      padding-top: 0.05rem;
+    }
+    .cv-detail strong { font-weight: 500; }
+    .cv-detail small { display: block; font-size: 0.82rem; color: var(--ink-faint); font-style: italic; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .contact-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+    .contact-item a {
+      color: var(--red);
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      word-break: break-all;
+    }
+    .contact-item a:hover { border-bottom-color: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--ink-faint);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+    footer span { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    header > * { animation: fadeUp 0.7s ease both; }
+    header > *:nth-child(1) { animation-delay: 0.1s; }
+    header > *:nth-child(2) { animation-delay: 0.25s; }
+    header > *:nth-child(3) { animation-delay: 0.38s; }
+    header > *:nth-child(4) { animation-delay: 0.48s; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="header-chinese">廖香玉</div>
+  <h1>Xiangyu Liao</h1>
+  <div class="header-title">PhD Researcher in Chinese Linguistics</div>
+  <div class="header-inst">University of Zurich</div>
+</header>
+
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ MAIN ══════════ -->
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">Introduction</div>
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="about-sidebar">
+        <h3>Research Interests</h3>
+        <span class="interest-tag">Chinese Linguistics</span>
+        <span class="interest-tag">Cantonese Dialect</span>
+        <span class="interest-tag">Historical Phonology</span>
+        <span class="interest-tag">Vernacular Chinese Fiction</span>
+        <span class="interest-tag">Folk Songs</span>
+        <span class="interest-tag">Performing Arts</span>
+      </div>
+      <div class="about-text">
+        <p>I am a PhD researcher in the Department of Chinese Studies at the University of Zurich, specialising in the historical phonology of the Cantonese dialect and its rich oral literary traditions. My work sits at the intersection of historical linguistics, dialectology, and cultural heritage studies.</p>
+        <p>My doctoral research investigates the tonal and phonological systems embedded in Cantonese folk songs from the 17th to 19th centuries — a corpus that offers rare, datable evidence of the spoken language at a time of significant phonological change. I draw on classical Chinese philological methods alongside fieldwork-based approaches, combining archival analysis with the documentation of living performance traditions.</p>
+        <p>Beyond my dissertation, I am deeply interested in vernacular Chinese fiction and the performing arts as sites where dialect, literature, and community identity intersect.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH PROJECTS -->
+  <section id="research">
+    <div class="section-label">Scholarly Work</div>
+    <h2>Research Projects</h2>
+
+    <div class="project-item">
+      <div class="project-type">PhD Dissertation</div>
+      <h3>The Historical Origin and A Phonological Study of Cantonese Folk Songs from the 17th to 19th Centuries</h3>
+      <p>This dissertation reconstructs the phonological system of Cantonese as evidenced in folk song texts — chiefly <em>mùyúgē</em> (wooden-fish songs) and related genres — produced between the early Qing Dynasty and the late 19th century. By combining close textual philology with systematic tonal analysis, the project traces how the Cantonese sound system evolved during this critical period and how folk song conventions both reflected and preserved archaic phonological features.</p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-type">Fieldwork Project</div>
+      <h3>Between Tradition and Modernity — The Legacy and Revival of <em>Mùyúgē</em> and <em>Lóngzhōugē</em></h3>
+      <div class="project-meta">Interviews & Audio Recording · May – July 2024</div>
+      <p>This fieldwork project documents the contemporary transmission of two endangered Cantonese folk song genres: <em>mùyúgē</em> (wooden-fish songs) and <em>lóngzhōugē</em> (dragon boat songs). Through in-depth interviews with practitioners and systematic audio recordings, the project captures how these oral traditions are being maintained, adapted, and revived in present-day communities — providing a living complement to the historical archival research of my dissertation.</p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-type">Conference Paper</div>
+      <h3>The Tone System of Cantonese in the Late Qing Dynasty as Reflected in <em>Yuè'ōu</em></h3>
+      <div class="project-meta">IACL-32, June 2026</div>
+      <p>This paper examines the tonal inventory of Cantonese as documented in <em>Yuè'ōu</em>, a late Qing Dynasty source, to reconstruct how the tonal system functioned and was perceived by educated speakers of the period. The analysis contributes to a broader diachronic account of tonal change in southern Chinese dialects.</p>
+    </div>
+
+    <div class="project-item">
+      <div class="project-type">Conference Paper</div>
+      <h3>Reclassifying Cantonese Folk Songs: Conceptual Overlap in <em>Mùyúgē</em>, <em>Mōyúgē</em>, and <em>Dàngē</em> (1600–1900)</h3>
+      <div class="project-meta">EACS-26, July 2026</div>
+      <p>Existing scholarship has treated <em>mùyúgē</em>, <em>mōyúgē</em>, and <em>dàngē</em> as largely discrete genres of Cantonese folk song. This paper challenges that classification by demonstrating significant overlap in their textual conventions, performance contexts, and phonological features across the 17th–19th centuries, arguing for a more fluid, context-dependent taxonomy.</p>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="section-label">Scholarly Output</div>
+    <h2>Publications</h2>
+
+    <div class="pub-item">
+      <div class="pub-authors">Wu Yiwei &amp; Liao Xiangyu</div>
+      <div class="pub-title">Rediscussion on the Phonetic Notation in <em>Xieshengbiao</em> (Written by Jiang Yougao) and the Related Questions</div>
+      <div class="pub-title-zh">再論江有誥《諧聲表》注音及相關問題</div>
+      <div class="pub-venue"><em>Wenxian Yuyan Xue</em> 文獻語言學, vol. 21, pp. 221–232. 2026.</div>
+    </div>
+
+    <p style="font-style:italic; color:var(--ink-faint); font-size:0.9rem; margin-top:1.5rem;">Further publications and working papers forthcoming.</p>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="section-label">Curriculum Vitae</div>
+    <h2>Academic Profile</h2>
+
+    <div class="cv-block">
+      <h3>Education</h3>
+      <div class="cv-entry">
+        <div class="cv-year">2023 – present</div>
+        <div class="cv-detail">
+          <strong>PhD in Chinese Studies</strong>
+          <small>University of Zurich, Switzerland</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">Sep 2019 – Jul 2022</div>
+        <div class="cv-detail">
+          <strong>Master of Literature — History of Chinese / Chinese Philology</strong>
+          <small>Peking University</small>
+          <small>Specialisation: Old Chinese Phonology &amp; Exegesis (<em>Xungu</em> 训诂), Historical Chinese Syntax, Archaic Chinese Characters</small>
+          <small>Master's Thesis: A Phonological Study of <em>Yuè'ōu</em> (粵謳)</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">Oct 2020 – Mar 2021</div>
+        <div class="cv-detail">
+          <strong>Exchange Semester — Chinese Studies / East Asian Studies</strong>
+          <small>Ruprecht-Karls-Universität Heidelberg</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">Sep 2015 – Jul 2019</div>
+        <div class="cv-detail">
+          <strong>Bachelor of Literature — Chinese Linguistics and Literature</strong>
+          <small>Peking University</small>
+          <small>Specialisation: Classical Chinese, Introduction to Linguistics, History of Chinese Literature</small>
+          <small>Bachelor's Thesis: A Phonological Study of the Zhongshan Liang'an Dialect</small>
+          <small>Term Paper: Middle Old Chinese Consonants <em>Jing</em> and <em>Qing</em> Pronounced as /t/ /tʰ/ — A Phenomenon in Modern Chinese Dialects and Its Historical Origins</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">Sep 2012 – Jul 2015</div>
+        <div class="cv-detail">
+          <strong>Secondary School (Abitur)</strong>
+          <small>Affiliated High School of Guangxi Normal University</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Research &amp; Fieldwork Projects</h3>
+      <div class="cv-entry">
+        <div class="cv-year">May – Jul 2024</div>
+        <div class="cv-detail">
+          <strong>Between Tradition and Modernity: The Legacy and Revival of <em>Mùyúgē</em> and <em>Lóngzhōugē</em></strong>
+          <small>Interviews and audio recording · University of Zurich</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2019 – 2022</div>
+        <div class="cv-detail">
+          <strong>Dialect Survey: Jinxian, Jiangxi 江西進賢</strong>
+          <small>Investigation of pronunciation, grammar, and vocabulary of the local dialect · Supervised by Prof. Xiang Mengbing 項夢冰 and Prof. Zhao Tong 趙彤 · Peking University</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2019 – 2022</div>
+        <div class="cv-detail">
+          <strong>Chronology of Ancient Chinese Phonological Texts</strong>
+          <small>Classification of historical phonological writings; biographical research on Qing-Dynasty phonologists Duan Yucai 段玉裁 and Jiang Yougao 江有誥 · Supervised by Prof. Zhao Tong 趙彤 · Peking University</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2019 – 2022</div>
+        <div class="cv-detail">
+          <strong>Proofreading: <em>Ancient Chinese Dictionary</em> by Prof. Zhang Shuangdi 張雙棣</strong>
+          <small>Correction of citation errors, pronunciations, and entries · Peking People's Education Press</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2015 – 2019</div>
+        <div class="cv-detail">
+          <strong>Dialect Survey: Pinghua in Zhongshan, Guangxi</strong>
+          <small>Peking University</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2015 – 2019</div>
+        <div class="cv-detail">
+          <strong>Yao Minority Language Survey: Liang'an, Guangxi</strong>
+          <small>Peking University</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Conference Presentations</h3>
+      <div class="cv-entry">
+        <div class="cv-year">June 2026</div>
+        <div class="cv-detail">
+          <strong>The Tone System of Cantonese in the Late Qing Dynasty as Reflected in <em>Yuè'ōu</em></strong>
+          <small>32nd Annual Conference of the International Association of Chinese Linguistics (IACL-32)</small>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">July 2026</div>
+        <div class="cv-detail">
+          <strong>Reclassifying Cantonese Folk Songs: Conceptual Overlap in <em>Mùyúgē</em>, <em>Mōyúgē</em>, and <em>Dàngē</em> (1600–1900)</strong>
+          <small>26th Biennial Conference of the European Association for Chinese Studies (EACS-26)</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Publications</h3>
+      <div class="cv-entry">
+        <div class="cv-year">2026</div>
+        <div class="cv-detail">
+          <strong>再論江有誥《諧聲表》注音及相關問題</strong>
+          <small>Wu Yiwei &amp; Liao Xiangyu · <em>Wenxian Yuyan Xue</em> 文獻語言學, 21: 221–232</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Languages &amp; Skills</h3>
+      <div class="cv-entry">
+        <div class="cv-year">Languages</div>
+        <div class="cv-detail">Chinese (native) · English (CET-6) · German (B2, Goethe Institut)</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">Interests</div>
+        <div class="cv-detail">Badminton · Chinese traditional music (Yangqin 扬琴, hammered dulcimer)</div>
+      </div>
+    </div>
+
+    <div class="cv-block">
+      <h3>Research Interests</h3>
+      <div class="cv-entry">
+        <div class="cv-year"></div>
+        <div class="cv-detail">Chinese Linguistics · Historical Phonology · Cantonese Dialect · Vernacular Chinese Fiction · Folk Song Traditions · Performing Arts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get in Touch</div>
+    <h2>Contact</h2>
+    <p style="margin-bottom:2rem;">I welcome inquiries regarding my research, potential collaborations, or questions about Cantonese linguistic history and folk song traditions.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <a href="/cdn-cgi/l/email-protection#ec94858d828b9599c280858d83ac999684c28f84"><span class="__cf_email__" data-cfemail="740c1d151a130d015a181d151b34010e1c5a171c">[email&#160;protected]</span></a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Institution</div>
+        <a href="https://www.uzh.ch" target="_blank">University of Zurich</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/xiangyu-liao-170a12340" target="_blank">linkedin.com/in/xiangyu-liao-170a12340</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <span>廖香玉</span> &nbsp;·&nbsp; Xiangyu Liao &nbsp;·&nbsp; University of Zurich &nbsp;·&nbsp; © 2026
+  <br><small style="opacity:0.55; font-size:0.72rem; display:block; margin-top:0.5rem;">Background: <a href="https://collections.vam.ac.uk/item/O90726/man-singing-dragon-boat-songs-painting-puqua/" target="_blank" style="color:var(--rule);">Man Singing Dragon Boat Songs</a>, Puqua (attr.), c. 1800 · Victoria and Albert Museum, London</small>
+</footer>
+
+</body>
+</html>
